@@ -3,10 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'echo "***************************************************"'
-        sh 'echo $HOME'
-        sh 'echo "***************************************************"'
-        sh 'pip install --user -r requirements.txt'
+       withEnv(["HOME=${env.WORKSPACE}"]) {
+            sh 'echo "***************************************************"'
+            sh 'echo $HOME'
+            sh 'echo "***************************************************"'
+            sh 'pip install --user -r requirements.txt'
+      }
+
       }
     }
     stage('test') {
