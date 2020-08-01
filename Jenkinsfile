@@ -6,6 +6,8 @@ pipeline {
        withEnv(["HOME=${env.WORKSPACE}"]) {
             sh 'echo "***************************************************"'
             sh 'echo $HOME'
+             sh 'echo "++++++++++"'
+            sh 'echo $PATH'
             sh 'echo "***************************************************"'
             sh 'pip install --user -r requirements.txt'
       }
