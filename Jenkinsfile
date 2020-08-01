@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'pip3 install --user -r requirements.txt'
+        sh 'echo "***************************************************"'
+        sh 'echo $HOME'
+        sh 'echo "***************************************************"'
+        sh 'pip install --user -r requirements.txt'
       }
     }
     stage('test') {
