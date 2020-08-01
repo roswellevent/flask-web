@@ -17,6 +17,8 @@ pipeline {
     }
     stage('test') {
       steps {
+
+        input(message: "Continue?")
         sh 'python ./.local/bin/pytest test_program.py --junitxml=test-reports/result.xml'
       }
       post {
