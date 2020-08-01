@@ -1,6 +1,7 @@
 import unittest
 import app
 
+
 class TestHello(unittest.TestCase):
 
     def setUp(self):
@@ -12,5 +13,3 @@ class TestHello(unittest.TestCase):
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'This is a simple Python Web for Demo Use')
 
-if __name__ == '__main__':
-    unittest.main()

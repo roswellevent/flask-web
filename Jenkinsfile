@@ -1,14 +1,19 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   stages {
-    stage('Build') {
+    stage('build') {
       steps {
         sh 'pip install -r requirements.txt'
       }
     }
     stage('test') {
       steps {
-        sh 'python test_program.py'
+        sh 'pytest test_program.py --junitxml=test-reports/result.xml'
+      }
+      post {
+        always {
+          junit 'test-reports/*.xml'
+        }
       }
     }
   }
