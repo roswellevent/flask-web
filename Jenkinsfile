@@ -10,6 +10,7 @@ pipeline {
             sh 'echo $PATH'
             sh 'echo "***************************************************"'
             sh 'pip install --user -r requirements.txt'
+            sh 'pip install --user -U pytest'
       }
 
       }
