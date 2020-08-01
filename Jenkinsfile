@@ -17,7 +17,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'pytest test_program.py --junitxml=test-reports/result.xml'
+        sh './.local/bin/pytest test_program.py --junitxml=test-reports/result.xml'
       }
       post {
         always {
