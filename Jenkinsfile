@@ -9,6 +9,7 @@ pipeline {
              sh 'echo "++++++++++"'
             sh 'echo $PATH'
             sh 'echo "***************************************************"'
+            sh 'source ~/venv/bin/activate'
             sh 'pip install --user -r requirements.txt'
             sh 'pip install --user -U pytest'
       }
@@ -17,7 +18,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh './.local/bin/pytest test_program.py --junitxml=test-reports/result.xml'
+        sh 'pytest test_program.py --junitxml=test-reports/result.xml'
       }
       post {
         always {
