@@ -1,8 +1,7 @@
 pipeline {
-  agent none
+  agent { dockerfile true  }
   stages {
     stage('Build') {
-         agent { dockerfile true  }
          steps {
             echo 'Building Conatiner from Dockerfile'
          }
