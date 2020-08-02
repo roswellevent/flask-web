@@ -13,3 +13,7 @@ class TestHello(unittest.TestCase):
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'This is a simple Python Web for Demo Use')
 
+    def test_hello2(self):
+        rv = self.app.get('/test')
+        self.assertEqual(rv.status, '200 OK')
+
