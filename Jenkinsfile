@@ -1,28 +1,16 @@
 pipeline {
   agent none
   stages {
-        stage('Build') {
-         agent any
+        stage('Build & Test') {
+         agent { dockerfile true  }
              steps {
                 echo 'Building Conatiner from Dockerfile'
-             }
-        }
-        stage('Test') {
-          agent { dockerfile true  }
-          steps {
-            withEnv(["HOME=${env.WORKSPACE}"]) {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh 'pytest test_program.py --junitxml=test-reports/result.xml'
             }
-          }
+             }
 
-         stage ('Build Image') {
-          agent any
-            steps {
-                docker.build "my-image:${env.BUILD_ID}"
-            }
         }
-
-
 
           post
           {
@@ -36,14 +24,4 @@ pipeline {
           }
     }
   }
-
-  agent any
-  stages {
-
-  }
-
-
-
-
-
 }
