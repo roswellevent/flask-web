@@ -19,7 +19,9 @@ pipeline {
             }
             success {
                         echo "======start to build image======="
-                        sh "docker build -t flask-web ."
+                        script {
+                            docker.build "my-image:${env.BUILD_ID}"
+                        }
             }
           }
     }
