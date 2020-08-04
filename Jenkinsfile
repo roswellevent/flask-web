@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
         stage('Build & Test') {
             agent { dockerfile true }
@@ -14,7 +14,9 @@ pipeline {
 		}
           post
           {
+
             always {
+              agent { dockerfile true }
               junit 'test-reports/*.xml'
             }
             success {
