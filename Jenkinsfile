@@ -18,10 +18,10 @@ pipeline
              agent any
              steps {
                 echo 'Building Container from Dockerfile'
-                 script {
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customImage.push()
-                 }
+                 #script {
+                 #   def customImage = docker.build("my-image:${env.BUILD_ID}")
+                 #   customImage.push()
+                 #}
              }
        }
   }
