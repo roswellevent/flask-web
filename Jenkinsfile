@@ -25,14 +25,13 @@ pipeline {
     }
   }
 
-  agent {any}
+  agent any
   stages {
     stage ('Build Image') {
         steps {
             docker.build "my-image:${env.BUILD_ID}"
         }
     }
-
   }
 
 
