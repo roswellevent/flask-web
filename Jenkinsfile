@@ -17,12 +17,13 @@ pipeline {
           junit 'test-reports/*.xml'
         }
         success {
+        stages{
             stage ('Build Image'){
                 steps{
                     sh "sudo docker build -t flask-web ."
                 }
             }
-
+        }
         }
       }
     }
