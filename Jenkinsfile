@@ -1,27 +1,19 @@
-pipeline {
-  agent none
-  stages {
-        stage('Build & Test') {
-            agent { dockerfile true }
+pipeline
+{
+  agent any
+  stages
+  {
+
+       stage('Build') {
              steps {
-                echo 'Building Conatiner from Dockerfile'
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'pytest test_program.py --junitxml=test-reports/result.xml'
-              }
+                echo 'Building Container from Dockerfile'
+                 script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
+                }
           }
 
-        }
-		}
-          post
-          {
 
-            always {
-              agent { dockerfile true }
-              junit 'test-reports/*.xml'
-            }
-            success {
-                        echo "======Build OK!!!!======="
-
-            }
-          }
   }
+
+ }
