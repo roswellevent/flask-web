@@ -18,12 +18,25 @@ pipeline {
               junit 'test-reports/*.xml'
             }
             success {
-                        echo "======start to build image======="
-                        script {
-                            docker.build "my-image:${env.BUILD_ID}"
-                        }
+                        echo "======Build OK!!!!======="
+
             }
           }
     }
   }
+
+  agent {any}
+  stages {
+    stage ('Build Image') {
+        steps {
+            docker.build "my-image:${env.BUILD_ID}"
+        }
+    }
+
+  }
+
+
+
+
+
 }
