@@ -19,7 +19,7 @@ pipeline {
             }
             success {
                         echo "======start to build image======="
-                        sh "sudo docker build -t flask-web ."
+                        sh "docker build -t flask-web ."
             }
           }
     }
