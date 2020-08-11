@@ -7,7 +7,7 @@ pipeline
   agent none
   stages
   {
-/*
+
           stage('Test') {
             agent { dockerfile true }
              steps {
@@ -18,7 +18,7 @@ pipeline
                   }
               }
           }
-          */
+
 
        stage('Build') {
              agent any
