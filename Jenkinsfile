@@ -36,7 +36,8 @@ pipeline
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            sh "docker push my-docker-image:${env.BUILD_ID}"
+            customImage.push("${env.BUILD_ID}")
+           // sh "docker push my-docker-image:${env.BUILD_ID}"
           }
         }
       }
