@@ -18,11 +18,11 @@ pipeline
              agent any
              steps {
                 echo 'Building Container from Dockerfile'
-                sh 'docker build -t jenkins-demo:${BUILD_NUMBER} . '
-                 //script {
-                 //   def customImage = docker.build("my-image:${env.BUILD_ID}")
+             //   sh 'docker build -t jenkins-demo:${BUILD_NUMBER} . '
+                 script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
                  //   customImage.push()
-                 //}
+                 }
              }
        }
   }
