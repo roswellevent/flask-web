@@ -1,5 +1,9 @@
 pipeline
 {
+  environment {
+    registry = "roswellevent/flask-web-images"
+    registryCredential = ‘DockerHub’
+  }
   agent none
   stages
   {
@@ -25,5 +29,18 @@ pipeline
                  }
              }
        }
+
+      stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            customImage.push()
+          }
+        }
+      }
+    }
+
+
+
   }
 }
