@@ -36,7 +36,7 @@ pipeline
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            customImage.push("roswellevent/flask-web-images/${env.BUILD_ID}")
+            customImage.push("latest")
            // sh "docker push my-docker-image:${env.BUILD_ID}"
           }
         }
