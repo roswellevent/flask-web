@@ -2,7 +2,7 @@ pipeline
 {
   environment {
     registry = "roswellevent/flask-web-images"
-    registryCredential = ‘DockerHub’
+    registryCredential = "DockerHub"
   }
   agent none
   stages
