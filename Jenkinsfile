@@ -26,7 +26,7 @@ pipeline
                 echo 'Building Container from Dockerfile'
              //   sh 'docker build -t jenkins-demo:${BUILD_NUMBER} . '
                  script {
-                     customImage = docker.build("roswellevent/flask-web-images/my-docker-image:${env.BUILD_ID}")
+                     customImage = docker.build("roswellevent/flask-web-images:${env.BUILD_ID}")
                  //   customImage.push()
                  }
              }
