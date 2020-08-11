@@ -24,7 +24,7 @@ pipeline
                 echo 'Building Container from Dockerfile'
              //   sh 'docker build -t jenkins-demo:${BUILD_NUMBER} . '
                  script {
-                    def customImage = docker.build("my-docker-image:${env.BUILD_ID}")
+                     customImage = docker.build("my-docker-image:${env.BUILD_ID}")
                  //   customImage.push()
                  }
              }
@@ -34,7 +34,7 @@ pipeline
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            customImage.push()
+            sh 'docker push my-docker-image:${env.BUILD_ID}'
           }
         }
       }
