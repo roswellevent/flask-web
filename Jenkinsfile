@@ -20,7 +20,7 @@ pipeline
           }
 
 
-       stage('Build') {
+       stage('Build Local Image') {
              agent any
              steps {
                 echo 'Building Container from Dockerfile'
@@ -32,19 +32,26 @@ pipeline
              }
        }
 
-      stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            customImage.push("${env.BUILD_ID}")
-            customImage.push("latest")
-           // sh "docker push my-docker-image:${env.BUILD_ID}"
-          }
-        }
-      }
+      stage('Deploy Image to DockerHub') {
+          steps{
+            script {
+              docker.withRegistry( '', registryCredential ) {
+                customImage.push("${env.BUILD_ID}")
+                customImage.push("latest")
+               // sh "docker push my-docker-image:${env.BUILD_ID}"
+              }
+            }
+       }
+
+       stage('Remove Local Image') {
+          steps{
+          sh 'docker rmi ${env.registry}:${env.BUILD_ID}'
+
+       }
+
+
+
+
     }
-
-
-
   }
 }
