@@ -49,10 +49,5 @@ pipeline
             sh 'docker rmi ${env.registry}:${env.BUILD_ID}'
            }
        }
-
-
-
-
-    }
   }
 }
