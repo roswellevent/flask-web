@@ -47,7 +47,7 @@ pipeline
        stage('Remove Local Image') {
           agent any
           steps{
-            sh 'docker rmi ${env.registry}:${env.BUILD_ID}'
+            sh 'docker rmi $registry:$BUILD_ID'
            }
        }
   }
