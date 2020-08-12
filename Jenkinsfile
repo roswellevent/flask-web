@@ -41,6 +41,7 @@ pipeline
                // sh "docker push my-docker-image:${env.BUILD_ID}"
               }
             }
+           }
        }
 
        stage('Remove Local Image') {
